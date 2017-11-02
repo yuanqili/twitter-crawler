@@ -139,3 +139,7 @@ Temporary Items
 
 .gitignore
 .idea/
+tweets.sqlite
+
+# SQLite database files
+*.sqlite

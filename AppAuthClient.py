@@ -1,6 +1,5 @@
 import base64
 import json
-from urllib.request import urlopen, Request
 
 import requests
 
@@ -29,16 +28,13 @@ class Client(object):
         bearer_token = '{}:{}'.format(self.consumer_key,
                                       self.consumer_secret).encode('ascii')
         encoded_bearer_token = base64.b64encode(bearer_token).decode('utf-8')
-        request = Request(resource_url)
-        request.add_header('Content-Type',
-                           'application/x-www-form-urlencoded;charset=UTF-8')
-        request.add_header('Authorization',
-                           'Basic {}'.format(encoded_bearer_token))
-        request.data = 'grant_type=client_credentials'.encode('ascii')
-        response = urlopen(request)
-        raw_data = response.read().decode('utf-8')
-        data = json.loads(raw_data)
-        return data['access_token']
+        data = {'grant_type': 'client_credentials'}
+        headers = {
+            'Authorization': 'Basic {}'.format(encoded_bearer_token),
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+        }
+        response = requests.post(resource_url, data=data, headers=headers)
+        return response.json()['access_token']
 
     def _twitter_api_request(self, api_url, params={}, headers={}):
         """
