@@ -11,7 +11,7 @@ class ClientException(Exception):
     pass
 
 
-class Client(object):
+class TwitterClient(object):
     """This class implements the Twitter's App-only authentication and supported
     API."""
 

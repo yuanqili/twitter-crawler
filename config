@@ -1,0 +1,13 @@
+; This file is used to set API and other environment variables
+
+[twitter]
+KEY=GcVofuJBUpOv6LKLLkHf9Y79e
+SECRET=Sv7W2KEWePjJqIeKwsj7QV4hxU0Svux0WxGm70DbfCktTqQMqI
+
+[newsapi]
+KEY=5ecc96c7bd214dcb8e773d5c61d2181a
+
+[external files]
+DB_PATH=.
+DB_FILE=tweets.sqlite
+TWITTER_ACCOUNT_PATH=accounts
